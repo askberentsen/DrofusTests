@@ -9,8 +9,8 @@ namespace Task1
         {
             Console.WriteLine("Hello, World!");
             VendingMachine vendingMachine = new VendingMachine();
-            vendingMachine.Wares.Add("potato",2);
-            Console.WriteLine(vendingMachine.Wares["potato"]);
+            vendingMachine.WarePrices.Add("potato",2);
+            Console.WriteLine(vendingMachine.WarePrices["potato"]);
             vendingMachine.AddCredit(40);
             Console.WriteLine(vendingMachine.Credit);
         }
@@ -18,7 +18,7 @@ namespace Task1
 
     internal class VendingMachine
     {
-        public Dictionary<string, int> Wares { get; private set; } = new Dictionary<string, int>();
+        public Dictionary<string, int> WarePrices { get; private set; } = new Dictionary<string, int>();
         public int Credit { get; private set; } = 0;
 
         public void AddCredit(int credit)
