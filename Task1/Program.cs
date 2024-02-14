@@ -13,6 +13,8 @@ namespace Task1
             Console.WriteLine(vendingMachine.Wares["potato"]);
             vendingMachine.AddCredit(40);
             Console.WriteLine(vendingMachine.Credit);
+            vendingMachine.AddCredit(int.MaxValue);
+            Console.WriteLine(vendingMachine.Credit);
         }
     }
 
@@ -24,7 +26,7 @@ namespace Task1
         public void AddCredit(int credit)
         {
             // A user should not be able to add a negative amount of credit
-            if (credit >= 0)
+            if (this.Credit + credit > this.Credit)
             {
                 this.Credit += credit;
             }
