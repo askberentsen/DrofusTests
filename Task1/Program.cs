@@ -24,6 +24,8 @@ namespace Task1
     {
         // This should not be exposed without making this a backing field for a readonly dictionary.
         private Dictionary<string, uint> WarePrices { get; set; } = new Dictionary<string, uint>();
+        
+        // Vending machines are filled from the back, so the oldest wares are output first.
         private Dictionary<string, Queue<Ware>> Stock { get; } = new Dictionary<string, Queue<Ware>>();
         public uint Credit { get; private set; } = 0;
 
