@@ -30,6 +30,18 @@ namespace Task2.Models
                 "+46 1 2345 6789",
                 new DateTime(2000, 1, 1)
             ));
+            for (int i = 0; i < 50; i++)
+            {
+                Create(new Contact(
+                    "Dudre" + i,
+                    "bralf"+i,
+                    "Big Computer",
+                    "Computer person",
+                    "Home",
+                    "+1 2345 27487 8274",
+                    new DateTime(1970,1,1)
+                    ));
+            }
         }
         
         public Dictionary<long, Contact> Repository { get; } = new Dictionary<long, Contact>();
