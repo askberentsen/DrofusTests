@@ -11,11 +11,13 @@ namespace Task1
             Console.WriteLine("Hello, World!");
             VendingMachine vendingMachine = new VendingMachine();
             vendingMachine.SetPrice("potato",2);
+            vendingMachine.AddWare(new Ware("potato"));
             Console.WriteLine(vendingMachine.GetPrice("potato"));
             vendingMachine.AddCredit(40);
             Console.WriteLine(vendingMachine.Credit);
 
             Ware ware = vendingMachine.Purchase("potato");
+            Console.WriteLine(ware.Name);
         }
     }
 
@@ -23,6 +25,7 @@ namespace Task1
     {
         // This should not be exposed without making this a backing field for a readonly dictionary.
         private Dictionary<string, uint> WarePrices { get; set; } = new Dictionary<string, uint>();
+        private Dictionary<string, Queue<Ware>> Stock { get; } = new Dictionary<string, Queue<Ware>>();
         public uint Credit { get; private set; } = 0;
 
         public void AddCredit(uint credit)
@@ -37,12 +40,7 @@ namespace Task1
             if (!HasEnoughCredit(wareName)) throw new InvalidOperationException("Not enough credits");
             if (!HasWare(wareName)) throw new InvalidOperationException("Out of stock");
             
-            return new Ware();
-        }
-
-        public bool CanPurchase(string wareName)
-        {
-            return HasWare(wareName) && HasEnoughCredit(wareName);
+            return Stock[wareName].Dequeue();
         }
 
         private bool HasEnoughCredit(string wareName)
@@ -64,9 +62,22 @@ namespace Task1
         {
             WarePrices[wareName] = price;
         }
+
+        public void AddWare(Ware ware)
+        {
+            if ( !Stock.ContainsKey(ware.Name) ) Stock[ware.Name] = new Queue<Ware>();
+            
+            Stock[ware.Name].Enqueue(new Ware(ware.Name));
+        }
     }
 
     internal class Ware
     {
+        public string Name { get; }
+
+        public Ware(string name)
+        {
+            this.Name = name;
+        }
     }
 }
