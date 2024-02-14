@@ -13,23 +13,24 @@ namespace Task1
             VendingMachine vendingMachine = new VendingMachine();
 
             // Fill vending machine
-            List<Ware> wares = new List<Ware>()
+            Dictionary<string, uint> wares = new Dictionary<string, uint>()
             {
-                new Ware("Bing Soda", 25),
-                new Ware("Pizza in a can", 90),
-                new Ware("Grass", 5),
-                new Ware("Mustard Soda", 25),
-                new Ware("Salad", 35),
-                new Ware("Turbocoke", 27),
-                new Ware("Norvegia", 60),
-                new Ware("6-up", 30),
-                new Ware("Yacht", 7_000_000),
-                new Ware("Packing Peanuts", 54),
+                {"Bing Soda", 25},
+                {"Pizza in a can", 90},
+                {"Grass", 5},
+                {"Mustard Soda", 25},
+                {"Salad", 35},
+                {"Turbocoke", 27},
+                {"Norvegia", 60},
+                {"6-up", 30},
+                {"Yacht", 7_000_000},
+                {"Packing Peanuts", 54},
             };
 
-            foreach (Ware ware in wares)
+            foreach (KeyValuePair<string, uint> keyValuePair in wares)
             {
-                vendingMachine.AddWare(ware);
+                vendingMachine.SetPrice(keyValuePair.Key, keyValuePair.Value);
+                vendingMachine.AddWare(new Ware(keyValuePair.Key));
             }
             vendingMachine.SetPrice("Diamonds",16);
 

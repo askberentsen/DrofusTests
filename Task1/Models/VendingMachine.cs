@@ -59,7 +59,8 @@ namespace Task1.Models
 
             if ( !WarePrices.ContainsKey(ware.Name) )
             {
-                WarePrices[ware.Name] = ware.DefaultPrice;
+                // If someone forgets to set the price, its better if the price is set to the maximum instead of free.
+                WarePrices[ware.Name] = uint.MaxValue;
             }
         }
     }
