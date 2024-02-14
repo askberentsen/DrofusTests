@@ -10,7 +10,6 @@ namespace Task1
         {
             Console.WriteLine("Hello, World!");
             VendingMachine vendingMachine = new VendingMachine();
-            vendingMachine.SetPrice("potato",2);
             vendingMachine.AddWare(new Ware("potato"));
             Console.WriteLine(vendingMachine.GetPrice("potato"));
             vendingMachine.AddCredit(40);
@@ -68,16 +67,28 @@ namespace Task1
             if ( !Stock.ContainsKey(ware.Name) ) Stock[ware.Name] = new Queue<Ware>();
             
             Stock[ware.Name].Enqueue(new Ware(ware.Name));
+
+            if ( !WarePrices.ContainsKey(ware.Name) )
+            {
+                WarePrices[ware.Name] = ware.DefaultPrice;
+            }
         }
     }
 
     internal class Ware
     {
         public string Name { get; }
+        public uint DefaultPrice { get; } = 10;
 
         public Ware(string name)
         {
             this.Name = name;
+        }
+
+        public Ware(string name, uint defaultPrice)
+        {
+            Name = name;
+            DefaultPrice = defaultPrice;
         }
     }
 }
