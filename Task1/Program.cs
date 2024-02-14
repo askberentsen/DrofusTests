@@ -38,7 +38,14 @@ namespace Task1
 
         public Ware Purchase(string wareName)
         {
-            return null;
+            if ( this.Credit > this.WarePrices[wareName] )
+            {
+                return new Ware();
+            }
+            else
+            {
+                throw new InvalidOperationException("Not enough credits");
+            }
         }
     }
 
