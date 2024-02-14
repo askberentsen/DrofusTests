@@ -23,7 +23,7 @@ namespace Task2.Controllers
         public ActionResult DetailView(long id)
         {
             ViewBag.Message = "My contact page.";
-            return View(MemoryContactRepository.Singleton.Read(id));
+            return View( new Tuple<long, Contact> (id, MemoryContactRepository.Singleton.Read(id)) );
         }
     }
 }

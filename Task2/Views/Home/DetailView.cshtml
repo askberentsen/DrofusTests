@@ -1,13 +1,33 @@
 ﻿@using Task2.Models
 @{
     ViewBag.Title = "Detail View";
-    Contact contact = Model;
+    Tuple<long, Contact> contactData = Model;
+    long id = contactData.Item1;
+    Contact contact = contactData.Item2;
+
+    if (IsPost)
+    {
+        contact.FirstName = Request.Form["fname"];
+        contact.LastName = Request.Form["lname"];
+        contact.Workplace = Request.Form["workplace"];
+        contact.JobTitle = Request.Form["jobTitle"];
+        contact.Address = Request.Form["address"];
+        contact.PhoneNumber = Request.Form["phoneNumber"];
+        DateTime birthday = DateTime.Parse(Request.Form["birthday"]);
+        contact.Birthday = birthday;
+        MemoryContactRepository.Singleton.Update(id, contact);
+    }
 }
 
 <h2>@ViewBag.Title.</h2>
 
-<p>Name: @contact.FirstName @contact.LastName</p>
-<p>Position: @contact.JobTitle at @contact.Workplace</p>
-<p>Address: <address>@contact.Address</address></p>
-<p>Phone number: @contact.PhoneNumber</p>
-<p>Date of birth: @contact.Birthday.ToShortDateString()</p>
+<form method="post">
+    <p>First Name: <input type="text" name="fname" value="@contact.FirstName"/></p>
+    <p>Last Name: <input type="text" name ="lname" value="@contact.LastName"/></p>
+    <p>Workplace: <input type="text" name="workplace" value="@contact.Workplace"/></p>
+    <p>Job Title: <input type="text" name="jobTitle" value="@contact.JobTitle"/></p>
+    <p>Address: <input type="text" name="address" value="@contact.Address"/></p>
+    <p>Phone number: <input type="text" name="phoneNumber" value="@contact.PhoneNumber"/></p>
+    <p>Date of Birth: <input type="date" name="birthday" value="@(contact.Birthday.ToString("yyyy-MM-dd") )"/></p>
+    <p><input type="submit" class="btn btn-primary" value="Update"/></p>
+</form>  
