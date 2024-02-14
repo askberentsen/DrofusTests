@@ -20,7 +20,7 @@ namespace Task1.Models
 
         private bool HasWare(string wareName)
         {
-            return true;
+            return WarePrices.ContainsKey(wareName);
         }
 
         public uint GetPrice(string wareName)
@@ -76,14 +76,25 @@ namespace Task1.Models
         
         public Tuple<Ware, uint> Purchase(string wareName)
         {
-            if (!HasEnoughCredit(wareName)) throw new InvalidOperationException("Not enough credits");
-            if (!HasWare(wareName)) throw new InvalidOperationException("Out of stock");
+            if (!HasWare(wareName)) throw new InvalidOperationException("Unrecognized item");
+            if (!IsInStock(wareName)) throw new InvalidOperationException("Out of stock");
+            /* because of uints, the change calculation is written twice, one for negative amounts,
+             * and one for positive amounts */
+            if (!HasEnoughCredit(wareName)) throw new InvalidOperationException(
+                $"Not enough credit, need {WarePrices[wareName] - Credit} more"
+                );
             
             Ware ware = Stock[wareName].Dequeue();
             uint change = Credit - WarePrices[wareName];
             Credit = 0;
             
             return new Tuple<Ware, uint>(ware, change);
+        }
+
+        private bool IsInStock(string wareName)
+        {
+            // Returns false if there is no queue, and the queue is empty
+            return Stock[wareName]?.Count > 0;
         }
     }
 }

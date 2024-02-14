@@ -52,7 +52,7 @@ namespace Task1
             do
             {
                 Console.Write("> ");
-                input = Console.ReadLine()?.ToLower().Split(' ');
+                input = Console.ReadLine()?.Split(' ');
                 command = input[0];
                 parameter = input.Length > 1 ? input[1] : "";
 
@@ -94,7 +94,20 @@ namespace Task1
                         break;
                     
                     case "order":
+                        try
+                        {
+                            Tuple<Ware, uint> purchase = vendingMachine.Purchase(parameter);
+                            Ware item = purchase.Item1;
+                            uint change = purchase.Item2;
+                            Console.WriteLine($"Giving out {item.Name}. Giving back change of {change}");
+                        }
+                        catch (InvalidOperationException e)
+                        {
+                            Console.WriteLine(e.Message);
+                        }
+                        
                         break;
+                    
                     case "restock":
                         break;
                     case "exit":
