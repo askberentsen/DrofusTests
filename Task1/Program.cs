@@ -16,11 +16,8 @@ namespace Task1
 
     internal class VendingMachine
     {
-        public VendingMachine()
-        {
-            List = new Dictionary<string, int>();
-        }
+        public Dictionary<string, int> List { get; private set; } = new Dictionary<string, int>();
+        public int Credit { get; private set; } = 0;
 
-        public Dictionary<string, int> List { get; internal set; }
     }
 }
