@@ -62,6 +62,7 @@ namespace Task1
 
         public void SetPrice(string wareName, int price)
         {
+            if (price <= 0) throw new ArgumentOutOfRangeException(nameof(price));
             WarePrices[wareName] = price;
         }
     }
