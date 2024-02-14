@@ -51,6 +51,7 @@ namespace Task2.Models
             return Repository.ContainsKey(id);
         }
 
+        // Ideally, this should not be sequential, as it is weak against scraping.
         public long NextKey()
         {
             return _nextId;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Task2.Models;
 
 namespace Task2.Controllers
 {
@@ -22,7 +23,7 @@ namespace Task2.Controllers
         public ActionResult DetailView()
         {
             ViewBag.Message = "My contact page.";
-            return View();
+            return View(MemoryContactRepository.Singleton.Read(1));
         }
     }
 }
