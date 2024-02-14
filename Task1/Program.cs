@@ -23,6 +23,7 @@ namespace Task1
 
         public void AddCredit(int credit)
         {
+            // A user should not be able to add a negative amount of credit
             if (credit >= 0)
             {
                 this.Credit += credit;
