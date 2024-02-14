@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Task2.Models
 {
-    public class MemoryContactRepository : IRepository<Contact>
+    public class MemoryContactRepository : IRepository<long,Contact>
     {
         private static MemoryContactRepository _singleton = null;
 
@@ -37,7 +37,7 @@ namespace Task2.Models
 
         public void Create(Contact contact)
         {
-            Repository[NextId()] = contact;
+            Repository[NextKey()] = contact;
             _nextId++;
         }
 
@@ -51,7 +51,7 @@ namespace Task2.Models
             return Repository.ContainsKey(id);
         }
 
-        public long NextId()
+        public long NextKey()
         {
             return _nextId;
         }

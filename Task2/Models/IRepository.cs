@@ -9,18 +9,18 @@ using System.Collections.Generic;
 namespace Task2.Models
 {
     // Following the interface segregation principle, this could be separated into more granular interfaces.
-    public interface IRepository<T>
+    public interface IRepository<K,T>
     {
         void Create(T item);
-        Contact Read(long id);
-        bool HasItem(long id);
-        long NextId();
-        void Update(long id, T item);
-        void Delete(long id);
+        Contact Read(K key);
+        bool HasItem(K key);
+        K NextKey();
+        void Update(K key, T item);
+        void Delete(K key);
         
         /* Note: Ideally this should be a readonly collection, such the interface enforces that implementers
          * of this interface does not simply expose its internal collection mutably via this interface.
          * */
-        Dictionary<long, T> ReadAll();
+        Dictionary<K, T> ReadAll();
     }
 }
