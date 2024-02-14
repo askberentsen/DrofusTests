@@ -109,9 +109,13 @@ namespace Task1
                         break;
                     
                     case "restock":
+                        vendingMachine.AddWare(new Ware(parameter));
+                        Console.WriteLine($"Added {parameter} to stock. I assume you have permission to do this,,, security by obfuscation is cool!!!");
                         break;
+                    
                     case "exit":
                         break;
+                    
                     default:
                         Console.WriteLine("Unknown command: " + command);
                         break;
