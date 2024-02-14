@@ -71,7 +71,6 @@ namespace Task1
                         break;
                     
                     case "insert":
-                        
                         try
                         {
                             uint creditAmount = uint.Parse(parameter);
@@ -88,8 +87,12 @@ namespace Task1
                         }
                         
                         break;
+                    
                     case "recall":
+                        uint creditsBack = vendingMachine.Recall();
+                        Console.WriteLine($"Giving out {creditsBack}");
                         break;
+                    
                     case "order":
                         break;
                     case "restock":
