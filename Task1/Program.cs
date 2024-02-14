@@ -28,14 +28,8 @@ namespace Task1
         public void AddCredit(uint credit)
         {
             // A user should not be able to add a negative amount of credit
-            if (this.Credit + credit > this.Credit)
-            {
-                this.Credit += credit;
-            }
-            else
-            {
-                throw new ArgumentException("Can't add credit such that the available credit is less than zero");
-            }
+            if (this.Credit + credit < this.Credit) throw new OverflowException(nameof(credit));
+            this.Credit += credit;
         }
 
         public Ware Purchase(string wareName)
@@ -62,7 +56,6 @@ namespace Task1
 
         public void SetPrice(string wareName, uint price)
         {
-            if (price <= 0) throw new ArgumentOutOfRangeException(nameof(price));
             WarePrices[wareName] = price;
         }
     }
