@@ -34,19 +34,32 @@ namespace Task1
 
         public Ware Purchase(string wareName)
         {
-            if ( HasEnoughCredit(wareName) )
+            if ( CanPurchase(wareName) )
             {
                 return new Ware();
             }
-            else
+            else if (HasEnoughCredit(wareName))
+            {
+                throw new InvalidOperationException("Out of stock");
+            }
             {
                 throw new InvalidOperationException("Not enough credits");
             }
         }
 
-        public bool HasEnoughCredit(string wareName)
+        public bool CanPurchase(string wareName)
+        {
+            return HasWare(wareName) && HasEnoughCredit(wareName);
+        }
+
+        private bool HasEnoughCredit(string wareName)
         {
             return this.Credit > this.WarePrices[wareName];
+        }
+
+        private bool HasWare(string wareName)
+        {
+            return true;
         }
 
         public uint GetPrice(string wareName)
