@@ -11,6 +11,7 @@ namespace Task1
             VendingMachine vendingMachine = new VendingMachine();
             vendingMachine.Wares.Add("potato",2);
             Console.WriteLine(vendingMachine.Wares["potato"]);
+            vendingMachine.AddCredit(40);
             Console.WriteLine(vendingMachine.Credit);
         }
     }
@@ -19,6 +20,13 @@ namespace Task1
     {
         public Dictionary<string, int> Wares { get; private set; } = new Dictionary<string, int>();
         public int Credit { get; private set; } = 0;
-        
+
+        public void AddCredit(int credit)
+        {
+            if (credit >= 0)
+            {
+                this.Credit += credit;
+            }
+        }
     }
 }
