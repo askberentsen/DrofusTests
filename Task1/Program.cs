@@ -13,6 +13,8 @@ namespace Task1
             Console.WriteLine(vendingMachine.WarePrices["potato"]);
             vendingMachine.AddCredit(40);
             Console.WriteLine(vendingMachine.Credit);
+
+            Ware ware = vendingMachine.Purchase("potato");
         }
     }
 
@@ -33,5 +35,14 @@ namespace Task1
                 throw new ArgumentException("Can't add credit such that the available credit is less than zero");
             }
         }
+
+        public Ware Purchase(string wareName)
+        {
+            return null;
+        }
+    }
+
+    internal class Ware
+    {
     }
 }
