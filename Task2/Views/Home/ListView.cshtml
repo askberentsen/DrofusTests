@@ -25,6 +25,7 @@
     @foreach (KeyValuePair<long, Contact> keyValuePair in repository.ReadAll())
     {
         Contact contact = keyValuePair.Value;
+        long id = keyValuePair.Key;
         <tr>
             <td>@contact.FirstName</td>
             <td>@contact.LastName</td>
@@ -33,6 +34,7 @@
             <td>@contact.Address</td>
             <td>@contact.Birthday.ToShortDateString()</td>
             <td>@contact.PhoneNumber</td>
+            <td>@Html.ActionLink("Details", "DetailView", "Home", new { id = id}, null)</td>
         </tr>
     }
 </table>

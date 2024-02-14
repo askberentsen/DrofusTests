@@ -20,10 +20,10 @@ namespace Task2.Controllers
             return View();
         }
 
-        public ActionResult DetailView()
+        public ActionResult DetailView(long id)
         {
             ViewBag.Message = "My contact page.";
-            return View(MemoryContactRepository.Singleton.Read(1));
+            return View(MemoryContactRepository.Singleton.Read(id));
         }
     }
 }
