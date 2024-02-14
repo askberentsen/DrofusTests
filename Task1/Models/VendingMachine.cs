@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Task1.Models
 {
@@ -25,6 +26,15 @@ namespace Task1.Models
         public uint GetPrice(string wareName)
         {
             return WarePrices[wareName];
+        }
+
+        /* Give access to the prices, without giving access to modify the collection.
+         * This is better implemented using readonly/immutable classes, but my current environment does not have
+         * those classes, so this is an ad hoc solution.
+         */
+        public IEnumerable<KeyValuePair<string, uint>> GetPrices()
+        {
+            return WarePrices.AsEnumerable();
         }
 
         public void SetPrice(string wareName, uint price)

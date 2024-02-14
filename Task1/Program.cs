@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.Design;
+using System.IO;
+using System.Text;
 using Task1.Models;
 
 namespace Task1
@@ -53,7 +55,34 @@ namespace Task1
                 input = Console.ReadLine()?.ToLower().Split(' ');
                 command = input[0];
                 parameter = input.Length > 1 ? input[1] : "";
-                
+
+                switch (command)
+                {
+                    case "list":
+                        List<string> output = new List<string>();
+                        foreach (var kvp in vendingMachine.GetPrices())
+                        {
+                            string item = kvp.Key;
+                            uint price = kvp.Value;
+                            output.Add($"{item} - {price}");
+                        }
+                        Console.WriteLine(String.Join(", ", output));
+                        
+                        break;
+                    case "insert":
+                        break;
+                    case "recall":
+                        break;
+                    case "order":
+                        break;
+                    case "restock":
+                        break;
+                    case "exit":
+                        break;
+                    default:
+                        Console.WriteLine("Unknown command: " + command);
+                        break;
+                }
             } while (command != "exit");
         }
     }
