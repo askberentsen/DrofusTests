@@ -1,6 +1,6 @@
 namespace Task1.Models
 {
-    internal class Ware
+    public class Ware
     {
         public string Name { get; }
 

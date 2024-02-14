@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Task1.Models
 {
-    internal class VendingMachine
+    public class VendingMachine
     {
         // This should not be exposed without making this a backing field for a readonly dictionary.
         private Dictionary<string, uint> WarePrices { get; set; } = new Dictionary<string, uint>();
