@@ -12,25 +12,6 @@ namespace Task1.Models
         private Dictionary<string, Queue<Ware>> Stock { get; } = new Dictionary<string, Queue<Ware>>();
         public uint Credit { get; private set; } = 0;
 
-        public void AddCredit(uint credit)
-        {
-            // A user should not be able to add a negative amount of credit
-            if (this.Credit + credit < this.Credit) throw new OverflowException(nameof(credit));
-            this.Credit += credit;
-        }
-
-        public Tuple<Ware, uint> Purchase(string wareName)
-        {
-            if (!HasEnoughCredit(wareName)) throw new InvalidOperationException("Not enough credits");
-            if (!HasWare(wareName)) throw new InvalidOperationException("Out of stock");
-            
-            Ware ware = Stock[wareName].Dequeue();
-            uint change = Credit - WarePrices[wareName];
-            Credit = 0;
-            
-            return new Tuple<Ware, uint>(ware, change);
-        }
-
         private bool HasEnoughCredit(string wareName)
         {
             return this.Credit > this.WarePrices[wareName];
@@ -62,6 +43,25 @@ namespace Task1.Models
                 // If someone forgets to set the price, its better if the price is set to the maximum instead of free.
                 WarePrices[ware.Name] = uint.MaxValue;
             }
+        }
+        
+        public void AddCredit(uint credit)
+        {
+            // A user should not be able to add a negative amount of credit
+            if (this.Credit + credit < this.Credit) throw new OverflowException(nameof(credit));
+            this.Credit += credit;
+        }
+        
+        public Tuple<Ware, uint> Purchase(string wareName)
+        {
+            if (!HasEnoughCredit(wareName)) throw new InvalidOperationException("Not enough credits");
+            if (!HasWare(wareName)) throw new InvalidOperationException("Out of stock");
+            
+            Ware ware = Stock[wareName].Dequeue();
+            uint change = Credit - WarePrices[wareName];
+            Credit = 0;
+            
+            return new Tuple<Ware, uint>(ware, change);
         }
     }
 }
