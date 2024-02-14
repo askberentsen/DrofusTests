@@ -38,7 +38,7 @@ namespace Task1
 
         public Ware Purchase(string wareName)
         {
-            if ( this.Credit > this.WarePrices[wareName] )
+            if ( HasEnoughCredit(wareName) )
             {
                 return new Ware();
             }
@@ -46,6 +46,11 @@ namespace Task1
             {
                 throw new InvalidOperationException("Not enough credits");
             }
+        }
+
+        public bool HasEnoughCredit(string wareName)
+        {
+            return this.Credit > this.WarePrices[wareName];
         }
     }
 
