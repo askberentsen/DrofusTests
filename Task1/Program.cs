@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Task1
 {
@@ -9,8 +10,8 @@ namespace Task1
         {
             Console.WriteLine("Hello, World!");
             VendingMachine vendingMachine = new VendingMachine();
-            vendingMachine.WarePrices.Add("potato",2);
-            Console.WriteLine(vendingMachine.WarePrices["potato"]);
+            vendingMachine.SetPrice("potato",2);
+            Console.WriteLine(vendingMachine.GetPrice("potato"));
             vendingMachine.AddCredit(40);
             Console.WriteLine(vendingMachine.Credit);
 
@@ -20,7 +21,8 @@ namespace Task1
 
     internal class VendingMachine
     {
-        public Dictionary<string, int> WarePrices { get; private set; } = new Dictionary<string, int>();
+        // This should not be exposed without making this a backing field for a readonly dictionary.
+        private Dictionary<string, int> WarePrices { get; set; } = new Dictionary<string, int>();
         public int Credit { get; private set; } = 0;
 
         public void AddCredit(int credit)
@@ -51,6 +53,16 @@ namespace Task1
         public bool HasEnoughCredit(string wareName)
         {
             return this.Credit > this.WarePrices[wareName];
+        }
+
+        public int GetPrice(string wareName)
+        {
+            return WarePrices[wareName];
+        }
+
+        public void SetPrice(string wareName, int price)
+        {
+            WarePrices[wareName] = price;
         }
     }
 
