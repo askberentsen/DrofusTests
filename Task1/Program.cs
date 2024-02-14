@@ -15,8 +15,12 @@ namespace Task1
             vendingMachine.AddCredit(40);
             Console.WriteLine(vendingMachine.Credit);
 
-            Ware ware = vendingMachine.Purchase("potato");
+            Tuple<Ware, uint> purchase = vendingMachine.Purchase("potato");
+            Ware ware = purchase.Item1;
+            uint change = purchase.Item2;
             Console.WriteLine(ware.Name);
+            Console.WriteLine(change);
+            Console.WriteLine(vendingMachine.Credit);
         }
     }
 
@@ -36,12 +40,16 @@ namespace Task1
             this.Credit += credit;
         }
 
-        public Ware Purchase(string wareName)
+        public Tuple<Ware, uint> Purchase(string wareName)
         {
             if (!HasEnoughCredit(wareName)) throw new InvalidOperationException("Not enough credits");
             if (!HasWare(wareName)) throw new InvalidOperationException("Out of stock");
             
-            return Stock[wareName].Dequeue();
+            Ware ware = Stock[wareName].Dequeue();
+            uint change = Credit - WarePrices[wareName];
+            Credit = 0;
+            
+            return new Tuple<Ware, uint>(ware, change);
         }
 
         private bool HasEnoughCredit(string wareName)
