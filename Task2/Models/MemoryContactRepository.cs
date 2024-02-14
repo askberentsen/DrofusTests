@@ -5,6 +5,16 @@ namespace Task2.Models
 {
     public class MemoryContactRepository : IRepository<Contact>
     {
+        private static MemoryContactRepository _singleton = null;
+
+        public static MemoryContactRepository Singleton => _singleton ?? (_singleton = new MemoryContactRepository());
+
+        private MemoryContactRepository()
+        {
+            // Fill repository
+            Create(new Contact(3));
+        }
+        
         public Dictionary<long, Contact> Repository { get; } = new Dictionary<long, Contact>();
 
         public void Create(Contact contact)
