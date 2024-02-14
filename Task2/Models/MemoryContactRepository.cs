@@ -13,7 +13,6 @@ namespace Task2.Models
         {
             // Fill repository
             Create(new Contact(
-                1,
                 "Ola",
                 "Nordmann",
                 "Norge.no",
@@ -23,7 +22,6 @@ namespace Task2.Models
                 new DateTime(1905, 6, 7)
                 ));
             Create(new Contact(
-                2,
                 "Öla",
                 "Svenskmann",
                 "Sverige.se",
@@ -35,11 +33,12 @@ namespace Task2.Models
         }
         
         public Dictionary<long, Contact> Repository { get; } = new Dictionary<long, Contact>();
+        private long _nextId { get; set; } = 1;
 
         public void Create(Contact contact)
         {
-            //TODO: check that ID is unique
-            Repository[contact.ID] = contact;
+            Repository[NextId()] = contact;
+            _nextId++;
         }
 
         public Contact Read(long id)
@@ -47,10 +46,20 @@ namespace Task2.Models
             return Repository[id];
         }
 
-        public void Update(Contact contact)
+        public bool HasItem(long id)
+        {
+            return Repository.ContainsKey(id);
+        }
+
+        public long NextId()
+        {
+            return _nextId;
+        }
+
+        public void Update(long id, Contact contact)
         {
             // In memory. We *shouldn't* need to do anything, under the assumption that the contact instance wasn't cloned.
-            Repository[contact.ID] = contact;
+            Repository[id] = contact;
         }
 
         public void Delete(long id)
@@ -62,7 +71,5 @@ namespace Task2.Models
         {
             return Repository;
         }
-        
-        //TODO: method for checking next available ID
     }
 }

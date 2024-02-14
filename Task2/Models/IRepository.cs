@@ -13,7 +13,9 @@ namespace Task2.Models
     {
         void Create(T item);
         Contact Read(long id);
-        void Update(T item);
+        bool HasItem(long id);
+        long NextId();
+        void Update(long id, T item);
         void Delete(long id);
         
         /* Note: Ideally this should be a readonly collection, such the interface enforces that implementers

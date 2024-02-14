@@ -1,8 +1,26 @@
 ﻿@using Task2.Models
 @{
-    ViewBag.Title = "Detail View"; 
-    long id = long.Parse(Request.Params["id"]);
-    Contact contact = MemoryContactRepository.Singleton.Read(id);
+    ViewBag.Title = "Detail View";
+    long id = 0;
+    Contact contact;
+    try
+    {
+        if (Request.Params["id"] != null)
+        {
+            id = long.Parse(Request.Params["id"]);
+            contact = MemoryContactRepository.Singleton.Read(id);            
+        }
+        else
+        {
+            contact = new Contact();
+        }
+    }
+    catch (FormatException e)
+    {
+        contact = new Contact();
+    }
+    
+    
 }
 
 <h2>@ViewBag.Title.</h2>
