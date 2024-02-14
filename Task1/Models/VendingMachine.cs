@@ -58,8 +58,13 @@ namespace Task1.Models
         public void AddCredit(uint credit)
         {
             // A user should not be able to add a negative amount of credit
-            if (this.Credit + credit < this.Credit) throw new OverflowException(nameof(credit));
+            if (!CanAddCredit(credit)) throw new OverflowException(nameof(credit));
             this.Credit += credit;
+        }
+        public bool CanAddCredit(uint credit)
+        {
+            // A user should not be able to add a negative amount of credit
+            return this.Credit + credit > this.Credit;
         }
         
         public Tuple<Ware, uint> Purchase(string wareName)

@@ -69,7 +69,24 @@ namespace Task1
                         Console.WriteLine(String.Join(", ", output));
                         
                         break;
+                    
                     case "insert":
+                        
+                        try
+                        {
+                            uint creditAmount = uint.Parse(parameter);
+                            vendingMachine.AddCredit(creditAmount);
+                            Console.WriteLine($"Current credit is {vendingMachine.Credit}");
+                        }
+                        catch (OverflowException e)
+                        {
+                            Console.WriteLine("Number too big, please insert something smaller");
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine("Illegal format");
+                        }
+                        
                         break;
                     case "recall":
                         break;
