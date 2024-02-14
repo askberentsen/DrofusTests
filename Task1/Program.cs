@@ -22,10 +22,10 @@ namespace Task1
     internal class VendingMachine
     {
         // This should not be exposed without making this a backing field for a readonly dictionary.
-        private Dictionary<string, int> WarePrices { get; set; } = new Dictionary<string, int>();
-        public int Credit { get; private set; } = 0;
+        private Dictionary<string, uint> WarePrices { get; set; } = new Dictionary<string, uint>();
+        public uint Credit { get; private set; } = 0;
 
-        public void AddCredit(int credit)
+        public void AddCredit(uint credit)
         {
             // A user should not be able to add a negative amount of credit
             if (this.Credit + credit > this.Credit)
@@ -55,12 +55,12 @@ namespace Task1
             return this.Credit > this.WarePrices[wareName];
         }
 
-        public int GetPrice(string wareName)
+        public uint GetPrice(string wareName)
         {
             return WarePrices[wareName];
         }
 
-        public void SetPrice(string wareName, int price)
+        public void SetPrice(string wareName, uint price)
         {
             if (price <= 0) throw new ArgumentOutOfRangeException(nameof(price));
             WarePrices[wareName] = price;
