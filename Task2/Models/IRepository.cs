@@ -1,6 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/*
+ * A Repository interface can be used so that code does not have to care about implementation specific details
+ * of the repository, if its SQL based, or if its saved to a file or in memory. This makes testing much easier,
+ * since you can now test methods and classes that should save to a database, using a mock repository instead.
+ */
 namespace Task2.Models
 {
     // Following the interface segregation principle, this could be separated into more granular interfaces.

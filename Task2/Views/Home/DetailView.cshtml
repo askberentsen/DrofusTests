@@ -1,14 +1,15 @@
 ﻿@using Task2.Models
 @{
-    ViewBag.Title = "Detail View";
-    
-    IRepository<Contact> repository = MemoryContactRepository.Singleton;
+    ViewBag.Title = "Detail View"; 
+    long id = long.Parse(Request.Params["id"]);
+    Contact contact = MemoryContactRepository.Singleton.Read(id);
 }
 
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<address>
-    My Company Address
-</address>
-<p>@repository.Read(3).ID</p>
+<p>Name: @contact.FirstName @contact.LastName</p>
+<p>Position: @contact.JobTitle at @contact.Workplace</p>
+<p>Address: <address>@contact.Address</address></p>
+<p>Phone number: @contact.PhoneNumber</p>
+<p>Date of birth: @contact.Birthday.ToShortDateString()</p>

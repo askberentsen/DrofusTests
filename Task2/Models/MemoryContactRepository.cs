@@ -12,13 +12,33 @@ namespace Task2.Models
         private MemoryContactRepository()
         {
             // Fill repository
-            Create(new Contact(3));
+            Create(new Contact(
+                1,
+                "Ola",
+                "Nordmann",
+                "Norge.no",
+                "Norsk patriot",
+                "Norgegata 1905",
+                "+47 2222 5555",
+                new DateTime(1905, 6, 7)
+                ));
+            Create(new Contact(
+                2,
+                "Öla",
+                "Svenskmann",
+                "Sverige.se",
+                "Svensk patriot",
+                "Sverigegata 3",
+                "+46 1 2345 6789",
+                new DateTime(2000, 1, 1)
+            ));
         }
         
         public Dictionary<long, Contact> Repository { get; } = new Dictionary<long, Contact>();
 
         public void Create(Contact contact)
         {
+            //TODO: check that ID is unique
             Repository[contact.ID] = contact;
         }
 
@@ -42,5 +62,7 @@ namespace Task2.Models
         {
             return Repository;
         }
+        
+        //TODO: method for checking next available ID
     }
 }
