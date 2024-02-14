@@ -13,8 +13,6 @@ namespace Task1
             Console.WriteLine(vendingMachine.Wares["potato"]);
             vendingMachine.AddCredit(40);
             Console.WriteLine(vendingMachine.Credit);
-            vendingMachine.AddCredit(int.MaxValue);
-            Console.WriteLine(vendingMachine.Credit);
         }
     }
 
@@ -29,6 +27,10 @@ namespace Task1
             if (this.Credit + credit > this.Credit)
             {
                 this.Credit += credit;
+            }
+            else
+            {
+                throw new ArgumentException("Can't add credit such that the available credit is less than zero");
             }
         }
     }
