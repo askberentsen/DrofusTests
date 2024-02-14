@@ -1,0 +1,38 @@
+﻿@using Task2.Models
+@{
+    ViewBag.Title = "List View";
+    IRepository<long, Contact> repository = MemoryContactRepository.Singleton;
+    
+}
+<style>
+    th, td {
+      padding: 15px;
+    }
+</style>
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<table>
+    <tr>
+        <td>First name</td>
+        <td>Last name</td>
+        <td>Workplace</td>
+        <td>Job Title</td>
+        <td>Address</td>
+        <td>Date of birth</td>
+        <td>Phone Number</td>
+    </tr>
+    @foreach (KeyValuePair<long, Contact> keyValuePair in repository.ReadAll())
+    {
+        Contact contact = keyValuePair.Value;
+        <tr>
+            <td>@contact.FirstName</td>
+            <td>@contact.LastName</td>
+            <td>@contact.Workplace</td>
+            <td>@contact.JobTitle</td>
+            <td>@contact.Address</td>
+            <td>@contact.Birthday.ToShortDateString()</td>
+            <td>@contact.PhoneNumber</td>
+        </tr>
+    }
+</table>
