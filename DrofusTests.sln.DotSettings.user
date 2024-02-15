@@ -1,0 +1,28 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/CreateUnitTestDialog/TestProjectMapping/=0801B51C_002D8E9E_002D44AD_002DADD4_002DAA540739373E/@EntryIndexedValue">844DDE17-36B6-4632-A5A7-55A1BFA0C69A</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/CreateUnitTestDialog/TestTemplateMapping/=NUnit3x/@EntryIndexedValue">db4927dd-2e12-48a7-9a84-2b7e3e31b9c8</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=50e6edfe_002D2ef3_002D41a2_002D8526_002D4cad78bc14be/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="VendingMachineDoesNotAcceptMoneyIfItOverflows" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::844DDE17-36B6-4632-A5A7-55A1BFA0C69A::.NETFramework,Version=v4.0::TestProject1.Models.VendingMachineTest.VendingMachineDoesNotAcceptMoneyIfItOverflows&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=62fbb9fe_002D1a43_002D434e_002Da3db_002D7692ff65f656/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="VendingMachineTest #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::844DDE17-36B6-4632-A5A7-55A1BFA0C69A::.NETFramework,Version=v4.0::TestProject1.Models.VendingMachineTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=80d87517_002D0aef_002D42bb_002Dae19_002D7ad3a8d3c5b1/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="VendingMachineTest #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::844DDE17-36B6-4632-A5A7-55A1BFA0C69A::.NETFramework,Version=v4.0::TestProject1.Models.VendingMachineTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c32e1623_002D5678_002D4c1a_002Da71e_002Ded9390b1d3f7/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="VendingMachineDoesNotAcceptMoneyIfItOverflows #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::844DDE17-36B6-4632-A5A7-55A1BFA0C69A::.NETFramework,Version=v4.0::TestProject1.Models.VendingMachineTest.VendingMachineDoesNotAcceptMoneyIfItOverflows&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=eda24ddb_002D1b46_002D445b_002Db2ea_002D632a85313b82/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="VendingMachineTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::844DDE17-36B6-4632-A5A7-55A1BFA0C69A::.NETFramework,Version=v4.0::Task1Tests.Models.VendingMachineTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
