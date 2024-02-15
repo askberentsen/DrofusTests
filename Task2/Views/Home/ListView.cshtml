@@ -10,7 +10,6 @@
     }
 </style>
 <h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
 <table>
     <tr>
@@ -34,7 +33,7 @@
             <td>@contact.Address</td>
             <td>@contact.Birthday.ToShortDateString()</td>
             <td>@contact.PhoneNumber</td>
-            <td>@Html.ActionLink("Details", "DetailView", "Home", new { id = id}, null)</td>
+            <td>@Html.ActionLink("Details", "DetailView", "Home", new { id = id }, null)</td>
         </tr>
     }
 </table>
